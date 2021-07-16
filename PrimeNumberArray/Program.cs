@@ -15,6 +15,8 @@ namespace PrimeNumberArray
             Console.WriteLine("Printing 2D Array of Prime Anagram");
             prime.StoreAnagaram();
             prime.PrintAnagram();
+            Console.WriteLine("Print anagram in queue");
+            prime.PrintAnagramQueue();
         }
     }
 }
