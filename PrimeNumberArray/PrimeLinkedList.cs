@@ -4,28 +4,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BalancedParantheses
+namespace PrimeNumberArray
 {
-    
-    public class Node<T>
+    public class Node
     {
-        public T value;
-        public Node<T> Next;
-        public Node(T value)
+        public int value;
+        public Node Next;
+        public Node(int value)
         {
             this.value = value;
             this.Next = null;
         }
     }
-        
-    public class StackImplementation<T> 
+    class PrimeLinkedList
     {
-        public Node<T> top;
+        private Node top;
 
-        public void Push(T value)
+        public void Push(int value)
         {
-            Node<T> newNode = new Node<T>(value);
-            if(top==null)
+            Node newNode = new Node(value);
+            if (top == null)
             {
                 top = newNode;
             }
@@ -36,24 +34,22 @@ namespace BalancedParantheses
             }
         }
 
-        public int pop()
+        public void pop()
         {
-            if(top==null)
+            if (top == null)
             {
-                Console.WriteLine("Unbalanced");
-                return 0;
+                Console.WriteLine("No element");
 
             }
             else
             {
+                Console.WriteLine("{0}",top.value);
                 top = top.Next;
-                return 1;
             }
         }
-
         public int CheckTop()
         {
-            if(top==null)
+            if (top == null)
             {
                 return 1;
             }
