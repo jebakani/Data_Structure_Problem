@@ -100,7 +100,7 @@ namespace Calender
                 startDay = 0;
             }
         }
-        //display the result
+        //display the result that is stored
         public void DisplayCalender()
         {
             Console.WriteLine(" S  M  T  W  T  F  S ");
