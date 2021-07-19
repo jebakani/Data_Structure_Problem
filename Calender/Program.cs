@@ -10,6 +10,7 @@ namespace Calender
             MonthlyCalender calender = new MonthlyCalender();
             calender.PrintCalender("July",2021);
             calender.DisplayCalender();
+            calender.DisplayQueue();
         }
     }
 }

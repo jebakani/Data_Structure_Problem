@@ -10,6 +10,10 @@ namespace Calender
     {
         //array for storing the the calender
         string[,] calender = new string[6, 7];
+        //create the object for the queue
+        WeekDay week = new WeekDay();
+        //getting dictionary for the days
+        Dictionary<int, string> days = new Dictionary<int, string>() { { 0, "Sunday" }, { 1, "Monday" }, { 2, "Tuesday" }, { 3, "Wednesday" }, { 4, "Thursday" }, { 5, "Friday" }, { 6, "Saturday" } };
         //dictionary to get the index for the month
         Dictionary< string,int> month = new Dictionary< string,int>() { {  "January",0 }, {  "February", 1}, {  "March",2 }, {  "April",3 }, { "May",4 }, {"June",5 }, {"July",6 }, {"August",7 }, { "September",8 }, {"October",9 }, {"November",10 }, {"December",11 } };
 
@@ -92,6 +96,8 @@ namespace Calender
                     {
                         break;
                     }
+                    //store the weeks and days in queue
+                    week.Enqueue(days.GetValueOrDefault(j), day);
                     //store the day in the array as string
                     calender[i, j] = day.ToString("D2");
                     day++;
@@ -111,6 +117,16 @@ namespace Calender
                     Console.Write("{0} ",calender[i,j]);
                 }
                 Console.WriteLine();
+            }
+        }
+        //display the queue
+        public void DisplayQueue()
+        {
+            WeekDayNode dayNode = week.Dequeue();
+            while(dayNode!=null)
+            {
+                Console.WriteLine("{0}   {1}",dayNode.day,dayNode.date);
+                dayNode = week.Dequeue();
             }
         }
     }
