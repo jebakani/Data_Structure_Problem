@@ -21,40 +21,37 @@ namespace Calender
     }
     class WeekDay
     {
-        WeekDayNode front = null;
-        WeekDayNode rear = null;
-
+        
+        CustomStack stack1 = new CustomStack();
+        CustomStack stack2 = new CustomStack();
         //add the current node at the begining of the list
         public void Enqueue(string day,int date)
         {
-            WeekDayNode weekDayObject = new WeekDayNode(day, date);
-            if(front==null)
+            WeekDayNode weekDay = new WeekDayNode(day, date);
+            // Move all elements from s1 to s2
+            while (stack1.Count()>0)
             {
-                front = weekDayObject;
+                stack2.Push(stack1.Pop());
             }
-            else
+            // Push item into s1
+            stack1.Push(weekDay);
+            // Push everything back to s1
+            while (stack2.Count() > 0)
             {
-                rear = front;
-                while(rear.Next!=null)
-                {
-                    rear = rear.Next;
-                }
-                rear.Next = weekDayObject;
+                stack1.Push(stack2.Pop());
+                //s2.Pop();
             }
         }
         //remove the element fm 
         public WeekDayNode Dequeue()
         {
-            if (front == null)
+            //return top of stack 1
+            if (stack1.Count() == 0)
             {
                 return null;
+
             }
-            else
-            {
-                rear = front;
-                front = front.Next;
-            }
-            return rear;
+            return stack1.Pop();
         }
     }
 }
